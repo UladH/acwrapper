@@ -6,7 +6,17 @@
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
-    "types": []
+    "preserveSymlinks": true,
+    "types": [],
+    "lib": [
+      "es2022",
+      "dom"
+    ],
+    "paths": {
+      "acwrapper": [
+        "dist/acwrapper"
+      ]
+    }
   },
   "exclude": [
     "**/*.spec.ts"

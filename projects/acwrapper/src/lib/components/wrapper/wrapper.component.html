@@ -1,0 +1,28 @@
+<div class="acw-wrapper">
+    <ng-container class="acw-wrapper_content" *ngIf="state === COMPONENT_STATE.Content">
+        <div *ngIf="content">
+            {{ content }}
+        </div>            
+        <ng-content></ng-content>
+        <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="state === COMPONENT_STATE.Loader">
+        Loader...
+        <ng-container *ngTemplateOutlet="loaderTemplate"></ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="state === COMPONENT_STATE.Error">
+        <div *ngIf="errorMessage && ! errorTemplate">
+            {{ errorMessage }}
+        </div>   
+        <ng-container *ngTemplateOutlet="errorTemplate"></ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="state === COMPONENT_STATE.Empty">
+        <div *ngIf="emptyMessage && !emptyTemplate">
+            {{ emptyMessage }}
+        </div>   
+        <ng-container *ngTemplateOutlet="emptyTemplate"></ng-container>
+    </ng-container>
+</div>
