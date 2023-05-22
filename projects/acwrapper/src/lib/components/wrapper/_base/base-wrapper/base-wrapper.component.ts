@@ -10,6 +10,7 @@ export abstract class BaseWrapperComponent implements AfterContentInit {
 
   @Input() public state: ComponentState | string = ComponentState.Content;
   @Input() public content: string | null = null;
+  @Input() public loadingMessage: string | null = 'Loading...';
   @Input() public emptyMessage: string | null = 'There is no data to display';
   @Input() public errorMessage: string | null = 'Something went wrong. Try again later';
 

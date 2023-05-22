@@ -2,6 +2,8 @@ export * from "./lib/components/wrapper/_base/base-wrapper/base-wrapper.componen
 
 export * from "./lib/components/wrapper/wrapper.module";
 export * from "./lib/components/wrapper/wrapper.component";
+export * from "./lib/components/loader/loader.module";
+export * from "./lib/components/loader/loader.component";
 
 export * from "./lib/components/wrapper/enums/component-state.enum";
 

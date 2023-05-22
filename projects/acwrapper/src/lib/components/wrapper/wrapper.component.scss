@@ -6,4 +6,9 @@
     place-content: stretch flex-start;
     align-items: stretch;
     max-width: 100%;
+
+    &-center {
+        place-content: center;
+        align-items: center;
+    }
 }
