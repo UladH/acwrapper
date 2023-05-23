@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MessageType } from './enums/message-type.enum';
 
 /**
@@ -9,7 +9,8 @@ import { MessageType } from './enums/message-type.enum';
 @Component({
   selector: 'acw-message',
   templateUrl: './message.component.html',
-  styleUrls: ['./message.component.scss']
+  styleUrls: ['./message.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MessageComponent {
   /**

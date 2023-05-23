@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { BaseWrapperComponent } from './_base/base-wrapper/base-wrapper.component';
 import { ComponentState } from './enums/component-state.enum';
 
@@ -10,7 +10,8 @@ import { ComponentState } from './enums/component-state.enum';
 @Component({
   selector: 'acw-wrapper',
   templateUrl: './wrapper.component.html',
-  styleUrls: ['./wrapper.component.scss']
+  styleUrls: ['./wrapper.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WrapperComponent extends BaseWrapperComponent {  
   /**
