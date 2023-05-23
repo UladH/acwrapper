@@ -1,7 +1,7 @@
 # Acwrapper
 
 Acwrapper is angular component wrapper project. In most cases angular smart components have 4 states: content, loader, exception, empty states.
-This project provides customizable basic component with realizated all of this states. You can create your own template for every state and put it in this component.
+This project provides customizable basic component with realized all of this states. You can create your own template for every state and put it in this component.
 
 ## Install
 
@@ -13,7 +13,7 @@ $ npm install acwrapper --save-dev
 
 ## Usage
 
-import wrapper module to your module
+Import wrapper module to your module
 
 ```ts
 import { WrapperModule } from 'acwrapper'; //here
@@ -129,6 +129,33 @@ Add component to html
 ```
 
 ### Create own custom wrapper based on basic wrapper
+
+Extend your component from BaseWrapperComponent, implement astract properties
+
+```ts
+
+import { Component, Input } from '@angular/core';
+import { BaseWrapperComponent, ComponentState } from 'acwrapper'; //add this line
+
+@Component({
+  selector: 'acw-custom-wrapper-based-default',
+  templateUrl: './custom-wrapper-based-default.component.html'
+})
+export class YourComponent extends BaseWrapperComponent { //Extend youe component from BaseWrapperComponent  
+  private _state: ComponentState | string = ComponentState.Content;
+  
+  //implement abstract properties
+  @Input() public set state(value: ComponentState | string){
+    this._state = value;
+  }
+  
+  public get state(): ComponentState | string {
+    return this._state;
+  }
+}
+
+
+```
 
 ```html
 
