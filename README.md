@@ -1,27 +1,182 @@
 # Acwrapper
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.2.
+Acwrapper is angular component wrapper project. In most cases angular smart components have 4 states: content, loader, exception, empty states.
+This project provides customizable basic component with realizated all of this states. You can create your own template for every state and put it in this component.
 
-## Development server
+## Install
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+You can run this command in your terminal
 
-## Code scaffolding
+```bash
+$ npm install acwrapper --save-dev
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Usage
 
-## Build
+import wrapper module to your module
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```ts
+import { WrapperModule } from 'acwrapper'; //here
 
-## Running unit tests
+@NgModule({
+  declarations: [
+    YourComponent
+  ],
+  imports: [
+    WrapperModule //here
+  ],
+  providers: [],
+  bootstrap: [YourComponent]
+})
+export class YourModule { }
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
 
-## Running end-to-end tests
+Add state property to your component
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```ts
+import { Component } from '@angular/core';
+import { ComponentState } from 'acwrapper';
 
-## Further help
+@Component({
+  selector: 'your-component',
+  templateUrl: './your-component.component.html'
+})
+export class SimpleWrapperComponent {
+  /**
+   * If you want use enum in html
+   */
+  public COMPONENT_STATE = ComponentState;
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+  /**
+   * for state you can use ComponentState enum or 'content' | 'loader' | 'error' | 'empty' values
+   */
+  public state: ComponentState | 'content' | 'loader' | 'error' | 'empty' = ComponentState.Content;
+}
+
+```
+
+### Simple wrapper
+
+Add state property to your component
+
+```ts
+import { Component } from '@angular/core';
+import { ComponentState } from 'acwrapper';
+
+@Component({
+  selector: 'your-component',
+  templateUrl: './your-component.component.html'
+})
+export class SimpleWrapperComponent {
+  /**
+   * If you want use enum in html
+   */
+  public COMPONENT_STATE = ComponentState;
+
+  /**
+   * for state you can use ComponentState enum or 'content' | 'loader' | 'error' | 'empty' values
+   */
+  public state: ComponentState | 'content' | 'loader' | 'error' | 'empty' = ComponentState.Content;
+}
+
+```
+
+Add component to html
+
+```html
+
+<h1>Example 1. Simpliest wrapper</h1>
+
+<acw-wrapper [state]="state">
+    Wrapper content
+</acw-wrapper>
+
+<h1>Example 2. Using attributes</h1>
+
+<acw-wrapper 
+    [state]="state"
+    content="Wrapper content"
+    loadingMessage="Loader message"
+    emptyMessage="'Empty' state content"
+    errorMessage="'Error' state content">
+</acw-wrapper>
+
+```
+
+### Wrapper with templates
+
+import template directive to your module
+
+```ts
+import { TemplateModule, WrapperModule } from 'acwrapper'; //here
+
+@NgModule({
+  declarations: [
+    YourComponent
+  ],
+  imports: [
+    WrapperModule,
+    TemplateModule //here
+  ],
+  providers: [],
+  bootstrap: [YourComponent]
+})
+export class YourModule { }
+
+```
+
+Add component to html
+
+```html
+
+<h1>Example 3. Templates driven wrapper</h1>
+
+<acw-wrapper [state]="state">
+    <ng-template acwTemplate="content">
+        <p>Your own "content" template</p>
+    </ng-template>
+
+    <ng-template acwTemplate="loader">
+        <p>Your own "loader" template</p>
+    </ng-template>
+    
+    <ng-template acwTemplate="empty">
+        <p>Your own "empty" template</p>
+    </ng-template>
+    
+    <ng-template acwTemplate="error">
+        <p>Your own "error" template</p>
+    </ng-template>
+</acw-wrapper>
+
+```
+
+### Create own custom wrapper based on basic wrapper
+
+```html
+
+<h1>Example 4. Custom wrapper based on default wrapper</h1>
+
+<acw-wrapper [state]="state">    
+    <ng-template acwTemplate="content">
+        <div>
+            <h1>Your customcontent template</h1>            
+            <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+            <ng-content></ng-content>
+        </div>
+    </ng-template>
+
+    <ng-template acwTemplate="loader">
+        <ng-container *ngTemplateOutlet="loaderTemplate"></ng-container>
+    </ng-template>
+    
+    <ng-template acwTemplate="empty">
+        <ng-container *ngTemplateOutlet="emptyTemplate"></ng-container>
+    </ng-template>
+    
+    <ng-template acwTemplate="error">
+        <ng-container *ngTemplateOutlet="errorTemplate"></ng-container>
+</acw-wrapper>
+
+```
