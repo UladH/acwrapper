@@ -8,7 +8,6 @@ import { TemplateDirective } from '../../../../directives/template/template.dire
 export abstract class BaseWrapperComponent implements AfterContentInit {
   public readonly COMPONENT_STATE = ComponentState;
 
-  @Input() public state: ComponentState | string = ComponentState.Content;
   @Input() public content: string | null = null;
   @Input() public loadingMessage: string | null = 'Loading...';
   @Input() public emptyMessage: string | null = 'There is no data to display';
@@ -48,6 +47,14 @@ export abstract class BaseWrapperComponent implements AfterContentInit {
       }
     });
   }
+
+  //#endregion
+
+  //#region getters setters
+
+  public abstract set state(value: ComponentState | string);
+  
+  public abstract get state(): ComponentState | string;
 
   //#endregion
 }
