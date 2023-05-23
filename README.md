@@ -58,30 +58,6 @@ export class SimpleWrapperComponent {
 
 ### Simple wrapper
 
-Add state property to your component
-
-```ts
-import { Component } from '@angular/core';
-import { ComponentState } from 'acwrapper';
-
-@Component({
-  selector: 'your-component',
-  templateUrl: './your-component.component.html'
-})
-export class SimpleWrapperComponent {
-  /**
-   * If you want use enum in html
-   */
-  public COMPONENT_STATE = ComponentState;
-
-  /**
-   * for state you can use ComponentState enum or 'content' | 'loader' | 'error' | 'empty' values
-   */
-  public state: ComponentState | 'content' | 'loader' | 'error' | 'empty' = ComponentState.Content;
-}
-
-```
-
 Add component to html
 
 ```html
