@@ -42,7 +42,7 @@ import { ComponentState } from 'acwrapper';
   selector: 'your-component',
   templateUrl: './your-component.component.html'
 })
-export class SimpleWrapperComponent {
+export class YourComponent {
   /**
    * If you want use enum in html
    */
@@ -138,8 +138,8 @@ import { Component, Input } from '@angular/core';
 import { BaseWrapperComponent, ComponentState } from 'acwrapper'; //add this line
 
 @Component({
-  selector: 'acw-custom-wrapper-based-default',
-  templateUrl: './custom-wrapper-based-default.component.html'
+  selector: 'your-component',
+  templateUrl: './your-component.component.html'
 })
 export class YourComponent extends BaseWrapperComponent { //Extend youe component from BaseWrapperComponent  
   private _state: ComponentState | string = ComponentState.Content;
