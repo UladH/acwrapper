@@ -1,0 +1,19 @@
+<h1>Example 1. Templates driven wrapper</h1>
+
+<acw-wrapper [state]="state">
+    <ng-template acwTemplate="content">
+        <p>Your own "content" template</p>
+    </ng-template>
+
+    <ng-template acwTemplate="loader">
+        <p>Your own "loader" template</p>
+    </ng-template>
+    
+    <ng-template acwTemplate="empty">
+        <p>Your own "empty" template</p>
+    </ng-template>
+    
+    <ng-template acwTemplate="error">
+        <p>Your own "error" template</p>
+    </ng-template>
+</acw-wrapper>

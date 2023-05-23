@@ -1,0 +1,22 @@
+<h1>Example 1. Custom wrapper based on default wrapper</h1>
+
+<acw-wrapper [state]="state">    
+    <ng-template acwTemplate="content">
+        <div>
+            <h1>Your customcontent template</h1>            
+            <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+            <ng-content></ng-content>
+        </div>
+    </ng-template>
+
+    <ng-template acwTemplate="loader">
+        <ng-container *ngTemplateOutlet="loaderTemplate"></ng-container>
+    </ng-template>
+    
+    <ng-template acwTemplate="empty">
+        <ng-container *ngTemplateOutlet="emptyTemplate"></ng-container>
+    </ng-template>
+    
+    <ng-template acwTemplate="error">
+        <ng-container *ngTemplateOutlet="errorTemplate"></ng-container>
+</acw-wrapper>
