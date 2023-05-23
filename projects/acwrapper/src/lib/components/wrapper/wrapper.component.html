@@ -18,16 +18,18 @@
     </ng-container>
 
     <ng-container *ngIf="state === COMPONENT_STATE.Error">
-        <div *ngIf="errorMessage && !errorTemplate">
-            {{ errorMessage }}
-        </div>   
+        <acw-message *ngIf="errorMessage && !errorTemplate"
+            [message]="errorMessage"
+            type="error">
+        </acw-message>
         <ng-container *ngTemplateOutlet="errorTemplate"></ng-container>
     </ng-container>
 
     <ng-container *ngIf="state === COMPONENT_STATE.Empty">
-        <div *ngIf="emptyMessage && !emptyTemplate">
-            {{ emptyMessage }}
-        </div>   
+        <acw-message *ngIf="emptyMessage && !emptyTemplate"
+            [message]="emptyMessage"
+            type="info">
+        </acw-message> 
         <ng-container *ngTemplateOutlet="emptyTemplate"></ng-container>
     </ng-container>
 </div>

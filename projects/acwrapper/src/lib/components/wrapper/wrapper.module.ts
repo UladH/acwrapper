@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TemplateModule } from '../../directives/template/template.module';
 import { WrapperComponent } from './wrapper.component';
 import { LoaderModule } from '../loader/loader.module';
-
+import { MessageModule } from '../message/message.module';
 
 
 @NgModule({
@@ -13,7 +13,8 @@ import { LoaderModule } from '../loader/loader.module';
   imports: [
     CommonModule,
     TemplateModule,
-    LoaderModule
+    LoaderModule,
+    MessageModule
   ],
   exports: [
     WrapperComponent
