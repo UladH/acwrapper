@@ -1,6 +1,6 @@
 {
   "name": "acwrapper",
-  "version": "1.0.2",  
+  "version": "1.0.4",  
   "description": "basic angular component wrapper",
   "url" : "https://github.com/UladH/acwrapper",
   "email" : "project@hostname.com",  
