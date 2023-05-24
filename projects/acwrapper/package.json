@@ -1,6 +1,15 @@
 {
   "name": "acwrapper",
+  "description": "basic angular component wrapper",
   "version": "1.0.1",
+  "url" : "https://github.com/UladH/acwrapper",
+  "email" : "project@hostname.com",  
+  "license" : "MIT",
+  "author": "Uladzislau Holub <uladzislau.holub@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/UladH/acwrapper"
+  },
   "peerDependencies": {
     "@angular/common": "^16.0.0",
     "@angular/core": "^16.0.0"

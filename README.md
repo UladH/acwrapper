@@ -132,6 +132,28 @@ Add component to html
 
 Extend your component from BaseWrapperComponent, implement astract properties
 
+import template directive to your module
+
+```ts
+import { TemplateModule, WrapperModule } from 'acwrapper'; //here
+
+@NgModule({
+  declarations: [
+    YourComponent
+  ],
+  imports: [
+    WrapperModule,
+    TemplateModule //here
+  ],
+  providers: [],
+  bootstrap: [YourComponent]
+})
+export class YourModule { }
+
+```
+
+Add component to html
+
 ```ts
 
 import { Component, Input } from '@angular/core';
@@ -141,7 +163,7 @@ import { BaseWrapperComponent, ComponentState } from 'acwrapper'; //add this lin
   selector: 'your-component',
   templateUrl: './your-component.component.html'
 })
-export class YourComponent extends BaseWrapperComponent { //Extend youe component from BaseWrapperComponent  
+export class YourComponent extends BaseWrapperComponent { //Extend your component from BaseWrapperComponent  
   private _state: ComponentState | string = ComponentState.Content;
   
   //implement abstract properties
